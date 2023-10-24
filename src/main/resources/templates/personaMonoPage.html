@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mono Persona</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<h1>Detalles de Persona</h1>
+
+    <div th:if="${persona != null}">
+        <p>ID: <span th:text="${persona.id}"></span></p>
+        <p>Nombre: <span th:text="${persona.nombre}"></span></p>
+        <p>Apellido: <span th:text="${persona.apellido}"></span></p>
+        <p>Correo: <span th:text="${persona.correo}"></span></p>
+        <p>Rol: <span th:text="${persona.rol}"></span></p>
+    </div>
+    <div th:if="${persona == null}">
+        <p>Person not found.</p>
+    </div>
+
+</body>
+</html>

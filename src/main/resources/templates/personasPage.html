@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personas</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <h1>Personas Guardadas</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo</th>
+            <th>Rol</th>
+            <th>Notas</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="persona : ${personas}">
+            <td th:text="${persona.id}"></td>
+            <td th:text="${persona.nombre}"></td>
+            <td th:text="${persona.apellido}"></td>
+            <td th:text="${persona.correo}"></td>
+            <td th:text="${persona.rol}"></td>
+            <td>
+                <a th:href="@{/api/notas/{id}(id=${persona.id})}">
+                    <button class="button button-start" type="button" @click="$emit('change-page', 'next')">
+                        <span class="button-text">Notas</span>
+                    </button>
+                </a>
+            </td>
+
+            <td>
+                <a th:href="@{/api/personas/{id}(id=${persona.id})}">
+                    <button class="button button-start" type="button" @click="$emit('change-page', 'next')">
+                        <span class="button-text">Detalles</span>
+                    </button>
+                </a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

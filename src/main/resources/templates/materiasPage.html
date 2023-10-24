@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Materias</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Materias disponibles</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Creditos</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="mat : ${materias}">
+            <td th:text="${mat.id}"></td>
+            <td th:text="${mat.nombre}"></td>
+            <td th:text="${mat.creditos}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
