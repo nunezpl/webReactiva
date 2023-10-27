@@ -1,10 +1,4 @@
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
 body {
     overflow: hidden;
     font-size: 24px;
@@ -19,11 +13,6 @@ body {
     margin: 10px;
 }
 
-button {
-    font-family: inherit;
-    font-size: inherit;
-}
-
 .page {
     overflow-y: auto;
     position: absolute;
@@ -35,15 +24,20 @@ button {
     text-align: center;
 }
 
+.title {
+    margin-bottom: 50px;
+    font-size: 48px;
+}
+
+button {
+    font-family: inherit;
+    font-size: inherit;
+}
+
 .inner {
     margin: auto;
     height: 100%;
     width: 700px;
-}
-
-.title {
-    margin-bottom: 50px;
-    font-size: 48px;
 }
 
 .button-wrapper {
@@ -58,7 +52,6 @@ button {
     border: 3px solid #fff;
     color: #050505;
     cursor: pointer;
-    transition: color 150ms cubic-bezier(0.1, 0.7, 0.6, 0.9);
 
     &::before {
         content: '';
@@ -74,25 +67,77 @@ button {
     }
 
     &:hover {
-
         &::before {
             transform: scaleX(1)
         }
     }
-
     &-text {
         position: relative;
     }
 }
 
-.next {
-    &-list {
-        list-style: disc;
-        text-align: left;
-        margin: auto;
-        width: 430px;
-        line-height: 1.6;
+.button2 {
+    position: relative;
+    height: 40px;
+    width: 100px;
+    background-color: transparent;
+    border: 3px solid #fff;
+    color: #050505;
+    cursor: pointer;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        background-color: #fff;
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform 150ms cubic-bezier(0.1, 0.7, 0.6, 0.9);
     }
+
+    &:hover {
+        &::before {
+            transform: scaleX(1)
+        }
+    }
+}
+
+.button3 {
+    position: relative;
+    height: 40px;
+    width: 200px;
+    background-color: transparent;
+    border: 3px solid #fff;
+    color: #050505;
+    cursor: pointer;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        background-color: #fff;
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform 150ms cubic-bezier(0.1, 0.7, 0.6, 0.9);
+    }
+
+    &:hover {
+        &::before {
+            transform: scaleX(1)
+        }
+    }
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, auto); /* Dos columnas con ancho automático */
+    grid-column-gap: 10px; /* Espacio entre los elementos */
 }
 
 /* Estilo para la tabla */
@@ -103,4 +148,32 @@ table {
     border-spacing: 15px;
     text-align: center;
 
+}
+
+/* Estilo para el cuadro de mensaje */
+mensaje-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f2f2f2;
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+formulario {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+container {
+    display: flex;
+}
+.left, .right {
+    flex: 1;
+    margin: 0 10px;
 }

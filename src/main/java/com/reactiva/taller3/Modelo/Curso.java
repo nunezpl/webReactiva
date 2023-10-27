@@ -12,8 +12,7 @@ import java.sql.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Getter @Setter
 @Table("curso")
 public class Curso {
     @Id

@@ -17,7 +17,7 @@ public class Nota {
     private Integer id;
 
     @Column("materia_id")
-    private String materia;
+    private Integer materia;
 
     @Column("profesor_id")
     private Integer profesor;

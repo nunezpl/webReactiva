@@ -12,28 +12,42 @@
     <h1>Bienvenido al sistema de notas</h1>
     <a href="/api/personas">
         <button class="button button-start" type="button" @click="$emit('change-page', 'next')">
-            <span class="button-text">Mostrar las personas</span>
+            <span class="button-text">Todas las personas</span>
         </button>
     </a>
+    <p></p>
 
-    <h1></h1>
+    <div class="container">
+        <a href="/api/personas/estudiantes">
+            <button class="button3" type="button" @click="$emit('change-page', 'next')">
+                <span class="button-text">Estudiantes</span>
+            </button>
+        </a>
+        <a href="/api/personas/profesores">
+            <button class="button3" type="button" @click="$emit('change-page', 'next')">
+                <span class="button-text">Profesores</span>
+            </button>
+        </a>
+    </div>
+
+    <p></p>
     <a href="/api/notas">
         <button class="button button-start" type="button" @click="$emit('change-page', 'next')">
-            <span class="button-text">Mostrar las notas</span>
+            <span class="button-text">Notas</span>
         </button>
     </a>
 
-    <h1></h1>
+    <p></p>
     <a href="/api/cursos">
         <button class="button button-start" type="button" @click="$emit('change-page', 'next')">
-            <span class="button-text">Mostrar los cursos</span>
+            <span class="button-text">Cursos</span>
         </button>
     </a>
 
-    <h1></h1>
+    <p></p>
     <a href="/api/materias">
         <button class="button button-start" type="button" @click="$emit('change-page', 'next')">
-            <span class="button-text">Mostrar las materias</span>
+            <span class="button-text">Materias</span>
         </button>
     </a>
 

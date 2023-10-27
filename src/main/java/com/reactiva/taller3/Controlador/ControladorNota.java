@@ -34,4 +34,10 @@ public class ControladorNota {
         return "notasPage";
     }
 
+    @GetMapping("/borrar/{id}")
+    String borraPersona(@PathVariable Integer id, Model model) {
+        servicioNota.borraId(id);
+        return "borraPage";
+    }
+
 }

@@ -25,4 +25,14 @@ public class ServicioNota {
 
         return notas;
     }
+
+    public void borraId(Integer id){
+        Flux<Nota> n = repositorioNota.findAll()
+                .filter(nota -> nota.getEstudiante().equals(id) || nota.getProfesor().equals(id));
+
+        n.collectList().subscribe(notasAEliminar -> {
+            repositorioNota.deleteAll(notasAEliminar);
+            System.out.println("Borrando notas de " + id);
+        });
+    }
 }

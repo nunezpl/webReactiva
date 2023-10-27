@@ -27,6 +27,15 @@
             <td th:text="${nota.estudiante}"></td>
             <td th:text="${nota.observacion}"></td>
             <td th:text="${nota.valor}"></td>
+
+            <td>
+                <a th:href="@{/api/notas/borrar/{id}(id=${nota.id})}">
+                    <button class="button2" type="button" @click="$emit('change-page', 'next')" id="borra">
+                        <span class="button-text">Eliminar</span>
+                    </button>
+                </a>
+            </td>
+
         </tr>
         </tbody>
     </table>

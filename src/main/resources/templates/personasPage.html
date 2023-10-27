@@ -8,6 +8,14 @@
 
 <body>
     <h1>Personas Guardadas</h1>
+
+    <a href="/api/personas/mas">
+        <button class="button2" type="button" @click="$emit('change-page', 'next')">
+            <span class="button-text">+</span>
+        </button>
+    </a>
+    <h1></h1>
+
     <table>
         <thead>
         <tr>
@@ -16,7 +24,6 @@
             <th>Apellido</th>
             <th>Correo</th>
             <th>Rol</th>
-            <th>Notas</th>
         </tr>
         </thead>
         <tbody>
@@ -26,23 +33,24 @@
             <td th:text="${persona.apellido}"></td>
             <td th:text="${persona.correo}"></td>
             <td th:text="${persona.rol}"></td>
-            <td>
-                <a th:href="@{/api/notas/{id}(id=${persona.id})}">
-                    <button class="button button-start" type="button" @click="$emit('change-page', 'next')">
-                        <span class="button-text">Notas</span>
-                    </button>
-                </a>
-            </td>
 
             <td>
                 <a th:href="@{/api/personas/{id}(id=${persona.id})}">
-                    <button class="button button-start" type="button" @click="$emit('change-page', 'next')">
+                    <button class="button2" type="button" @click="$emit('change-page', 'next')">
                         <span class="button-text">Detalles</span>
                     </button>
                 </a>
             </td>
 
+            <td>
+                <a th:href="@{/api/personas/borrar/{id}(id=${persona.id})}">
+                    <button class="button2" type="button" @click="$emit('change-page', 'next')" id="borra">
+                        <span class="button-text">Eliminar</span>
+                    </button>
+                </a>
+            </td>
         </tr>
+
         </tbody>
     </table>
 </body>
