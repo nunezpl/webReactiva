@@ -4,21 +4,14 @@
     <meta charset="UTF-8">
     <title>Borra</title>
     <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/deletePerson.js"></script>
 </head>
 
 <body>
 
     <h1>¡Registro eliminado con exito!</h1>
 
-    <button class="button2" type="button" onclick="goBack()">
-        <span class="button-text">Cerrar</span>
-    </button>
-
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
+    <a href="/api/personas" class="button2">Back to Person List</a>
 
 </body>
 </html>

@@ -10,7 +10,7 @@
     <div class="left">
         <div th:if="${persona != null}">
             <h1> <span th:text="${persona.nombre}"></span> <span th:text="${persona.apellido}"></span></h1>
-            <p></p>
+            <br />
             <p>ID: <span th:text="${persona.id}"></span></p>
             <p>Correo: <span th:text="${persona.correo}"></span></p>
             <p>Rol: <span th:text="${persona.rol}"></span></p>
@@ -33,9 +33,9 @@
             <tbody>
             <tr th:each="nota : ${notas}">
                 <td th:text="${nota.id}"></td>
-                <td th:text="${nota.materia}"></td>
-                <td th:text="${nota.profesor}"></td>
-                <td th:text="${nota.estudiante}"></td>
+                <td th:text="${nota.materia_id}"></td>
+                <td th:text="${nota.profesor_id}"></td>
+                <td th:text="${nota.estudiante_id}"></td>
                 <td th:text="${nota.observacion}"></td>
                 <td th:text="${nota.valor}"></td>
             </tr>

@@ -17,18 +17,21 @@ public class Nota {
     private Integer id;
 
     @Column("materia_id")
-    private Integer materia;
+    private Integer materia_id;
 
     @Column("profesor_id")
-    private Integer profesor;
+    private Integer profesor_id;
 
     @Column("estudiante_id")
-    private Integer estudiante;
+    private Integer estudiante_id;
 
     @Column("observacion")
     private String observacion;
 
     @Column("valor")
     private Number valor;
+
+    @Column("porcentaje")
+    private Number porcentaje;
 
 }

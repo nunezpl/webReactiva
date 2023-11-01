@@ -134,10 +134,14 @@ button {
     }
 }
 
-.container {
+container {
     display: grid;
-    grid-template-columns: repeat(2, auto); /* Dos columnas con ancho automático */
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas con tamaño igual */
     grid-column-gap: 10px; /* Espacio entre los elementos */
+}
+
+.left, .right {
+    margin: 0 10px;
 }
 
 /* Estilo para la tabla */
@@ -148,6 +152,10 @@ table {
     border-spacing: 15px;
     text-align: center;
 
+}
+.scrollable-table {
+    max-height: 700px;
+    overflow-y: auto;
 }
 
 /* Estilo para el cuadro de mensaje */
@@ -170,10 +178,3 @@ formulario {
     text-align: center;
 }
 
-container {
-    display: flex;
-}
-.left, .right {
-    flex: 1;
-    margin: 0 10px;
-}

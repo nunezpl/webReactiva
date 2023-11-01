@@ -1,9 +1,10 @@
 package com.reactiva.taller3.Servicio;
 
-import com.reactiva.taller3.Modelo.Nota;
 import com.reactiva.taller3.Modelo.Persona;
 import com.reactiva.taller3.Repositorio.RepositorioPersona;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -41,31 +42,33 @@ public class ServicioPersona {
         return profesores;
     }
 
-    public Mono<Persona> create(Mono<Persona> personaMono) {
+    public Mono<Persona> create(Persona persona) {
+
         System.out.println("Creando.. ");
-        return personaMono.flatMap(repositorioPersona::save);
+        return repositorioPersona.save(persona);
     }
 
     public Mono<Persona> getPerson(Integer id){
         return repositorioPersona.findById(id);
     }
 
-    public void delete(Integer id){
+    public Mono<ResponseEntity<Persona>> updatePerson(Integer id, Persona persona) {
+        return repositorioPersona.findById(id)
+                .flatMap(old -> {
+                    old.setNombre(persona.getNombre());
+                    old.setApellido(persona.getApellido());
+                    old.setCorreo(persona.getCorreo());
+                    old.setRol(persona.getRol());
+                    return repositorioPersona.save(old).log();
+                })
+                .map(updatedBook -> new ResponseEntity<>(updatedBook, HttpStatus.OK))
+                .defaultIfEmpty(new ResponseEntity<>(HttpStatus.OK));
+    }
 
-        Mono<Persona> p = repositorioPersona.findById(id);
-        p.subscribe(persona -> {
-            if (persona != null) {
-                System.out.println("Borrando " + persona.getNombre());
-
-                // Borra las notas de una persona
-                servicioNota.borraId(id);
-
-                // Borra la persona
-                repositorioPersona.delete(persona);
-            } else {
-                System.out.println("No se encontró una persona con el ID proporcionado.");
-            }
-        });
+    public Mono<Persona> deletePerson(Integer id){
+        return repositorioPersona.findById(id)
+                .flatMap(deleted -> repositorioPersona.delete(deleted)
+                        .then(Mono.just(deleted)));
     }
 
 }

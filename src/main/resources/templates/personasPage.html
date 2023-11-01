@@ -1,58 +1,35 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Personas</title>
+    <title>Lista de Personas</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-    <h1>Personas Guardadas</h1>
 
-    <a href="/api/personas/mas">
-        <button class="button2" type="button" @click="$emit('change-page', 'next')">
-            <span class="button-text">+</span>
-        </button>
-    </a>
-    <h1></h1>
+        <h1 class="title">Lista de Personas</h1>
 
-    <table>
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Correo</th>
-            <th>Rol</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="persona : ${personas}">
-            <td th:text="${persona.id}"></td>
-            <td th:text="${persona.nombre}"></td>
-            <td th:text="${persona.apellido}"></td>
-            <td th:text="${persona.correo}"></td>
-            <td th:text="${persona.rol}"></td>
+        <a href="/api/personas/mas" class="button2"> + </a>
 
-            <td>
-                <a th:href="@{/api/personas/{id}(id=${persona.id})}">
-                    <button class="button2" type="button" @click="$emit('change-page', 'next')">
-                        <span class="button-text">Detalles</span>
-                    </button>
-                </a>
-            </td>
+        <div class="scrollable-table">
+        <table>
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Correo Electrónico</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody id="personas-list">
+            <!-- Aquí se mostrarán las personas -->
+            </tbody>
+        </table>
+    </div>
 
-            <td>
-                <a th:href="@{/api/personas/borrar/{id}(id=${persona.id})}">
-                    <button class="button2" type="button" @click="$emit('change-page', 'next')" id="borra">
-                        <span class="button-text">Eliminar</span>
-                    </button>
-                </a>
-            </td>
-        </tr>
+    <script src="/js/listPerson.js"></script>
 
-        </tbody>
-    </table>
 </body>
-
 </html>

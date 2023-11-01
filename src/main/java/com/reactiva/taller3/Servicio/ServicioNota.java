@@ -5,6 +5,7 @@ import com.reactiva.taller3.Repositorio.RepositorioNota;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Service
 public class ServicioNota {
@@ -18,7 +19,7 @@ public class ServicioNota {
 
     public Flux<Nota> notasId(Integer id){
         Flux<Nota> notas = repositorioNota.findAll()
-                .filter(nota -> nota.getEstudiante().equals(id) || nota.getProfesor().equals(id))
+                .filter(nota -> nota.getEstudiante_id().equals(id) || nota.getProfesor_id().equals(id))
                 .doOnError(error -> {
                     System.err.println("Error: " + error.getMessage());
                 });
@@ -28,11 +29,19 @@ public class ServicioNota {
 
     public void borraId(Integer id){
         Flux<Nota> n = repositorioNota.findAll()
-                .filter(nota -> nota.getEstudiante().equals(id) || nota.getProfesor().equals(id));
+                .filter(nota -> nota.getEstudiante_id().equals(id) || nota.getProfesor_id().equals(id));
 
         n.collectList().subscribe(notasAEliminar -> {
             repositorioNota.deleteAll(notasAEliminar);
             System.out.println("Borrando notas de " + id);
         });
+    }
+
+    public Mono<Void> deleteNoteById(Integer id) {
+        return null;
+    }
+
+    public Mono<Nota> createNote(Nota note) {
+        return null;
     }
 }

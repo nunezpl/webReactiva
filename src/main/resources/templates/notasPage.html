@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Notas</title>
@@ -17,28 +17,16 @@
             <th>Estudiante</th>
             <th>Observacion</th>
             <th>Valor</th>
+            <th>%</th>
         </tr>
         </thead>
-        <tbody>
-        <tr th:each="nota : ${notas}">
-            <td th:text="${nota.id}"></td>
-            <td th:text="${nota.materia}"></td>
-            <td th:text="${nota.profesor}"></td>
-            <td th:text="${nota.estudiante}"></td>
-            <td th:text="${nota.observacion}"></td>
-            <td th:text="${nota.valor}"></td>
-
-            <td>
-                <a th:href="@{/api/notas/borrar/{id}(id=${nota.id})}">
-                    <button class="button2" type="button" @click="$emit('change-page', 'next')" id="borra">
-                        <span class="button-text">Eliminar</span>
-                    </button>
-                </a>
-            </td>
-
-        </tr>
+        <tbody id="notas-list">
+        <!-- Aquí se mostrarán las personas -->
         </tbody>
     </table>
+
+
+    <script src="/js/listNote.js"></script>
 
 </body>
 </html>
